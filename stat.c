@@ -4,6 +4,7 @@
 #include <errno.h>
 #include <sys/stat.h>
 #include <time.h>
+#include <string.h>
 //#include "rand.h"
 
 int main() {
@@ -16,3 +17,4 @@ int main() {
   }
   printf("Size of file: %ld\n", test->st_size);
 }
+
