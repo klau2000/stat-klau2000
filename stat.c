@@ -45,7 +45,7 @@ void permissionls (char * input) { //definitely not the most efficient way...
     else if (*(input + i) == '4')
       printf("r--");
     else if (*(input + i) == '5')
-      printf("r--x");
+      printf("r-x");
     else if (*(input + i) == '6')
       printf("rw-");
     else
