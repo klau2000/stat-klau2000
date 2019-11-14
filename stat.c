@@ -30,6 +30,30 @@ void readable(long size) {
   }
 }
 
+void permissionls (char * input) { //definitely not the most efficient way...
+  printf("Permissions as shown in ls -l form:\n");
+  printf("-");
+  for (int i = 3; i < 6; i++){
+    if (*(input + i) == '0')
+      printf("---");
+    else if (*(input + i) == '1')
+      printf("--x");
+    else if (*(input + i) == '2')
+      printf("-w-");
+    else if (*(input + i) == '3')
+      printf("-wx");
+    else if (*(input + i) == '4')
+      printf("r--");
+    else if (*(input + i) == '5')
+      printf("r--x");
+    else if (*(input + i) == '6')
+      printf("rw-");
+    else
+      printf("rwx");
+  }
+  printf("\n");
+}
+
 int main() {
   struct stat test;
   stat("stat.c", &test);
@@ -40,5 +64,8 @@ int main() {
   printf("Size of this file: %ld bytes\n", test.st_size);
   readable(test.st_size);
   printf("Mode(Permissions) of this file: %o\n", test.st_mode);
+  char permission[100];
+  sprintf(permission, "%o", test.st_mode);
+  permissionls(permission);
   printf("Time Last Accessed: %s\n", ctime(&test.st_atime));
 }
